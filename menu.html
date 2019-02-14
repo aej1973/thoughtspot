@@ -1,0 +1,115 @@
+<html>
+
+<head>
+	<title>ReMAP Essential</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width" />
+	<meta charset="utf-8" />
+	<title>ThoughtSpot Embed App</title>
+	<script type="text/javascript" src="api/api.min.js"></script>
+	<script type="text/javascript">
+		function updateIframeUrl(id) {
+			var iframeUrl =
+				"http://remap.search.nathanresearch.com/?embedApp=true#/";
+			if (id === "homepage") {
+				iframeUrl = "http://remap.search.nathanresearch.com/?embedApp=true#/";
+			} else if (id === "search") {
+				iframeUrl =
+					"http://remap.search.nathanresearch.com/?embedApp=true#/answer";
+			} else if (id === "answerList") {
+				iframeUrl =
+					"http://remap.search.nathanresearch.com/?embedApp=true#/answers";
+			} else if (id === "pinboardList") {
+				iframeUrl =
+					"http://remap.search.nathanresearch.com/?embedApp=true#/pinboards";
+			} else if (id === "data") {
+				iframeUrl =
+					"http://remap.search.nathanresearch.com/?embedApp=true#/data/tables";
+			}
+			document.getElementById("ts-embed").setAttribute("src", iframeUrl);
+		}
+
+		function onCallback(event) {
+			console.log(event.data);
+		}
+		window.thoughtspot.subscribeToAlerts(
+			"http://remap.search.nathanresearch.com",
+			onCallback
+		);
+	</script>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<link href="css/samp2.css" rel="stylesheet" id="bootstrap-css">
+	<link href="css/main.css" rel="stylesheet" type="text/css" />
+	<link href="css/elements.css" rel="stylesheet" type="text/css" />
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+	<header>
+		<div class="header_container">
+			<div class="logo_container">
+				<img src="images/ReMap-Logo.png" width="150">
+			</div>
+			<!--nav-->
+			<div class="menu_container">
+				<nav>
+					<ul style="margin: 0px 0px 0px 25px;">
+						<li class="dropdown_menu menu_content">
+							<a class="menu_label" href="index.php"><i class="ace-icon fa fa-columns"></i> Contacts<span style="margin-left: 3px;"
+								 class="ace-icon fa fa-angle-double-down"></span> </a>
+							<ul class="dropdown-content">
+								<li><a href="create_contact.php">Create Contact</a></li>
+								<li><a href="contact.php">View Contact</a></li>
+							</ul>
+						</li>
+						<li class="menu_content">
+							<a class="menu_label" href="#"><i class="ace-icon fa fa-user"></i> Leads</a>
+						</li>
+						<li class="menu_content"><a class="menu_label" href="lead.php"><i class="ace-icon fa fa-list-ul"></i> Marketing</a></li>
+
+						<li class="menu_content">
+							<a class="menu_label" href="campaign.php"><i class="ace-icon fa fa-flag"></i> Sales Tools
+							</a>
+						</li>
+						<li class="menu_content"><a class="menu_label" href="calender.php"><i class="ace-icon fa fa-calendar"></i> Jobs</a></li>
+
+						<li class="menu_content"><a class="menu_label" href="calender.php"><i class="ace-icon fa fa-calendar"></i>
+								Reports</a></li>
+
+						<li class="dropdown_menu menu_content">
+							<a class="menu_label" href="#"><i class="ace-icon fa fa-cog"></i> Setting<span style="margin-left: 3px;" class="ace-icon fa fa-angle-double-down"></span></a>
+							<ul class="dropdown-content">
+								<li class="arrow_top"></li>
+								<li><a href="email_template.php">Email Templates</a></li>
+								<li><a href="create_role.php">Create Role</a></li>
+							</ul>
+						</li>
+
+					</ul>
+				</nav>
+			</div>
+			<!-- nav end  -->
+			<div class="dropdown_menu user_container">
+				<!-- <img style="height: 65%;border-radius: 30px;" src="images/user-icon.png" /> -->
+				<ul class="dropdown-content-user">
+					<li><a href="create_contact.php">Profile</a></li>
+					<li><a href="contact.php">Logout</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="header_border"></div>
+	</header>
+	<content>
+		<button onclick="updateIframeUrl('homepage')">Homepage</button>
+		<button onclick="updateIframeUrl('search')">Search</button>
+		<button onclick="updateIframeUrl('answerList')">Answer list</button>
+		<button onclick="updateIframeUrl('pinboardList')">Pinboard list</button>
+		<button onclick="updateIframeUrl('data')">Data</button>
+		<iframe id="ts-embed" src="http://remap.search.nathanresearch.com/?embedApp=true#/" height="80%" width="80%"></iframe>
+	</content>
+	<footer>
+		Copyrights @ 2019 | <a href="http://nathanresearch.com">Nathan Research Inc.</a>
+	</footer>
+</body>
+
+</html>
